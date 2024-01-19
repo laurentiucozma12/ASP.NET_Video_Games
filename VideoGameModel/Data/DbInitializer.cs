@@ -78,6 +78,17 @@ namespace VideoGameModel.Data
 
                 context.SaveChanges();
 
+                var customers = new List<Customer>
+                {
+                    new Customer { Name = "John", Address = "New York", BirthDate = DateTime.Parse("1987-02-06") },
+                    new Customer { Name = "Obama", Address = "Loss Angeles", BirthDate = DateTime.Parse("1984-03-04") }
+                };
+
+                foreach (Customer customer in customers)
+                {
+                    context.Customers.Add(customer);
+                }
+
                 var orders = new List<Order>
                 {
                     new Order { CustomerId = customers[0].Id, VideoGameId = videoGames[0].Id, OrderDate = DateTime.Parse("2024-01-01") },
