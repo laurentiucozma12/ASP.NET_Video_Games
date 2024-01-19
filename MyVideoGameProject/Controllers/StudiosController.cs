@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,8 +10,9 @@ using VideoGameModel.Data;
 using VideoGameModel.Models;
 
 namespace MyVideoGameProject
-
 {
+    [Authorize(Roles = "Employee")]
+
     public class StudiosController : Controller
     {
         private readonly VideoGameContext _context;

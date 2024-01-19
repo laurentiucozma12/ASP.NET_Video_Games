@@ -4,10 +4,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyVideoGameProject.Models;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyVideoGameProject
-
 {
+    [Authorize(Policy = "SalesManager")]
+
     public class RolesController : Controller
     {
         private RoleManager<IdentityRole> roleManager;

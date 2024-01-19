@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-//using Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 
 namespace MyVideoGameProject
 {
-    [Authorize]
+    [Authorize(Policy = "SalesManager")]
+
     public class ClaimsController : Controller
     {
         private UserManager<IdentityUser> userManager;
