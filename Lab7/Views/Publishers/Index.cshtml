@@ -1,0 +1,112 @@
+﻿@model LibraryModel.Models.LibraryViewModels.PublisherIndexData
+
+@{
+    ViewData["Title"] = "Publishers";
+}
+<h2>Publishers</h2>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Publisher Name</th>
+            <th>Address</th>
+            @* <th>Books</th> *@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Publishers)
+        {
+            string selectedRow = "";
+
+            if (item.Id == (int?)ViewData["PublisherId"])
+            {
+                selectedRow = "success";
+            }
+
+            <tr class="@selectedRow">
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublisherName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                @* <td>
+                    @{
+                        foreach (var book in item.PublishedBooks)
+                        {
+                            @book.Book.Id @: @book.Book.Title <br />
+                        }
+                    }
+                </td> *@
+                <td>
+                    <a asp-action="Index" asp-route-id="@item.Id">Select</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (Model.Books!= null)
+{
+    <h3>Books Published by Selected Publisher</h3>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
+        </tr>
+        @foreach (var item in Model.Books)
+        {
+            string selectedRow = "";
+            if (item.Id == (int?)ViewData["BookId"])
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.ActionLink("Select", "Index", new { bookId = item.Id })
+                </td>
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                    @item.Author.FirstName @Html.Raw(" ") @item.Author.LastName
+                </td>
+                <td>
+                    @item.Price
+                </td>
+            </tr>
+        }
+    </table>
+}
+@if (Model.Orders != null)
+{
+    <h3>Orders of the Selected Book</h3>
+    <table class="table">
+        <tr>
+            <th>Order</th> 
+            <th>Customer</th>
+            <th>Date</th>
+        </tr>
+        @foreach (var item in Model.Orders)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+            </tr>
+        }
+    </table>
+}
