@@ -77,6 +77,20 @@ namespace VideoGameModel.Data
                 }
 
                 context.SaveChanges();
+
+                var orders = new List<Order>
+                {
+                    new Order { CustomerId = customers[0].Id, VideoGameId = videoGames[0].Id, OrderDate = DateTime.Parse("2024-01-01") },
+                    new Order { CustomerId = customers[0].Id, VideoGameId = videoGames[1].Id, OrderDate = DateTime.Parse("2024-01-02") },
+                    new Order { CustomerId = customers[1].Id, VideoGameId = videoGames[2].Id, OrderDate = DateTime.Parse("2024-01-03") }
+                };
+
+                foreach (Order order in orders)
+                {
+                    context.Orders.Add(order);
+                }
+
+                context.SaveChanges();
             }
         }
     }

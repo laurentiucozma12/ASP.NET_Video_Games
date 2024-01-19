@@ -12,5 +12,7 @@ namespace VideoGameModel.Models
         public int VideoGameId { get; set; }
         public VideoGame VideoGame { get; set; }
         public DateTime OrderDate { get; set; }
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
     }
 }
