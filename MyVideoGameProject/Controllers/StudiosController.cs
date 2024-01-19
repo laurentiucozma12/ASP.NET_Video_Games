@@ -12,7 +12,6 @@ using VideoGameModel.Models;
 namespace MyVideoGameProject
 {
     [Authorize(Roles = "Employee")]
-
     public class StudiosController : Controller
     {
         private readonly VideoGameContext _context;

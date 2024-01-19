@@ -9,8 +9,7 @@ using System.Security.Claims;
 
 namespace MyVideoGameProject
 {
-    [Authorize(Policy = "SalesManager")]
-
+    [Authorize(Policy = "Manager")]
     public class ClaimsController : Controller
     {
         private UserManager<IdentityUser> userManager;

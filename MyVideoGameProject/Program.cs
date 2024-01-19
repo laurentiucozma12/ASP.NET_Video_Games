@@ -36,12 +36,18 @@ builder.Services.AddAuthorization(opts =>
 });
 builder.Services.AddAuthorization(opts =>
 {
-    opts.AddPolicy("SalesManager", policy =>
+    opts.AddPolicy("Employee", policy =>
+    {
+        policy.RequireRole("Employee");
+        policy.RequireClaim("Department", "Sales");
+    });
+    opts.AddPolicy("Manager", policy =>
     {
         policy.RequireRole("Manager");
         policy.RequireClaim("Department", "Sales");
     });
 });
+
 builder.Services.ConfigureApplicationCookie(opts =>
 {
     opts.AccessDeniedPath = "/Identity/Account/AccessDenied";

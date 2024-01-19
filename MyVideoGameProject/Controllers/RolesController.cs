@@ -8,8 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MyVideoGameProject
 {
-    [Authorize(Policy = "SalesManager")]
-
+    [Authorize(Policy = "Manager")]
     public class RolesController : Controller
     {
         private RoleManager<IdentityRole> roleManager;
