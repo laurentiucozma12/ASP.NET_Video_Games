@@ -12,7 +12,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Cozma_Laurentiu_Lab2.Controllers
+namespace MyVideoGameProject.Controllers
 {
     [Authorize(Policy = "SalesManager")]
     public class CustomersController : Controller
