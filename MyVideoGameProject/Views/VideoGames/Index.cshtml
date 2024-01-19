@@ -1,5 +1,4 @@
-﻿@* @model IEnumerable<Cozma_Laurentiu_Lab2.Models.Book> *@
-@model PaginatedList<LibraryModel.Models.Book>
+﻿@model PaginatedList<VideoGameModel.Models.VideoGame>
 
 @{
     ViewData["Title"] = "Index";
@@ -28,7 +27,7 @@
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortParm"]" asp-routecurrentFilter="@ViewData["CurrentFilter"]">Title</a>
             </th>
             <th>
-                Author
+                Studio
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-routecurrentFilter="@ViewData["CurrentFilter"]">Price</a>
@@ -45,7 +44,7 @@
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    @item.Author.FirstName @Html.Raw(" ") @item.Author.LastName
+                    @item.Studio.Name
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
