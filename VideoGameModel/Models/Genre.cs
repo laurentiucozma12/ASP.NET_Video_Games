@@ -11,9 +11,6 @@ namespace VideoGameModel.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        [ForeignKey("VideoGameId")]
-        public int? VideoGameId { get; set; }
-        public VideoGame? VideoGame { get; set; }
+        public ICollection<VideoGame>? VideoGames { get; set; }
     }
 }

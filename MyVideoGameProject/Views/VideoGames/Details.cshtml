@@ -10,43 +10,42 @@
     <h4>VideoGame</h4>
     <hr />
     <dl class="row">
+
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Title)
         </dd>
-        <dt class = "col-sm-2">
+
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Studio)
         </dt>
-        <dd class = "col-sm-10">
-            @Model.Studio.Name
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Studio.Name)
         </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Genre.Name)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Platform)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Platform.Name)
+        </dd>
+
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Price)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Price)
-        </dd>
-        @* <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Orders)
-        </dt> *@
-        <dd class="col-sm-10">
-            <table class="table">
-                <tr>
-                    <th>Customer</th>
-                    <th>Order Date</th>
-                </tr>
-                @foreach (var item in Model.Orders)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.OrderDate)
-                        </td>
-                    </tr>
-                }
-            </table>
-        </dd>
+        </dd>        
     </dl>
 </div>
 <div>

@@ -24,13 +24,19 @@
     <thead>
         <tr>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortParm"]" asp-routecurrentFilter="@ViewData["CurrentFilter"]">Title</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Title</a>
             </th>
             <th>
                 Studio
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-routecurrentFilter="@ViewData["CurrentFilter"]">Price</a>
+                Genre
+            </th>
+            <th>
+                Platform
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Price</a>
             </th>
             <th>
                 Actions
@@ -38,13 +44,41 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    @item.Studio.Name
+                    @if (item.Studio != null)
+                    {
+                        @item.Studio.Name
+                    }
+                    else
+                    {
+                        <text>N/A</text>
+                    }
+                </td>
+                <td>
+                    @if (item.Genre != null)
+                    {
+                        @item.Genre.Name
+                    }
+                    else
+                    {
+                        <text>N/A</text>
+                    }
+                </td>
+                <td>
+                    @if (item.Platform != null)
+                    {
+                        @item.Platform.Name
+                    }
+                    else
+                    {
+                        <text>N/A</text>
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
@@ -58,10 +92,12 @@
         }
     </tbody>
 </table>
+
 @{
- var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
 }
+
 <a asp-action="Index"
    asp-route-sortOrder="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageIndex - 1)"

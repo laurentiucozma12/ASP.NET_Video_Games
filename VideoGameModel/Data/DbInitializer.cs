@@ -26,31 +26,18 @@ namespace VideoGameModel.Data
                     new Studio { Name = "Valve Corporation" },
                 };
 
-                var videoGames = new List<VideoGame>
-                {
-                    new VideoGame { Title = "World of Warcraft", Studio = studios[0], Price = Decimal.Parse("30") },
-                    new VideoGame { Title = "Mario", Studio = studios[1], Price = Decimal.Parse("19") },
-                    new VideoGame { Title = "League of Legends", Studio = studios[2], Price = Decimal.Parse("0") },
-                    new VideoGame { Title = "Counter-Strike: Global Offensive", Studio = studios[3], Price = Decimal.Parse("15") },
-                };
-
-                foreach (VideoGame videoGame in videoGames)
-                {
-                    context.VideoGames.Add(videoGame);
-                }
-
                 context.SaveChanges();
 
                 var genres = new List<Genre>
                 {
-                    new Genre { Name = "MMORPG", VideoGame = videoGames[0] },
-                    new Genre { Name = "Fantasy", VideoGame = videoGames[0] },
-                    new Genre { Name = "Platformer", VideoGame = videoGames[1] },
-                    new Genre { Name = "Indie", VideoGame = videoGames[1] },
-                    new Genre { Name = "MOBA", VideoGame = videoGames[2] },
-                    new Genre { Name = "Strategy", VideoGame = videoGames[2] },
-                    new Genre { Name = "Shooter", VideoGame = videoGames[3] },
-                    new Genre { Name = "Action", VideoGame = videoGames[3] },
+                    new Genre { Name = "MMORPG" },
+                    new Genre { Name = "Fantasy" },
+                    new Genre { Name = "Platformer" },
+                    new Genre { Name = "Indie" },
+                    new Genre { Name = "MOBA" },
+                    new Genre { Name = "Strategy" },
+                    new Genre { Name = "Shooter" },
+                    new Genre { Name = "Action" },
                 };
 
                 foreach (Genre genre in genres)
@@ -62,18 +49,28 @@ namespace VideoGameModel.Data
 
                 var platforms = new List<Platform>
                 {
-                    new Platform { Name = "PC", VideoGame = videoGames[0] },
-                    new Platform { Name = "PlayStation", VideoGame = videoGames[0] },
-                    new Platform { Name = "Xbox", VideoGame = videoGames[0] },
-                    new Platform { Name = "Nintentdo Switch", VideoGame = videoGames[1] },
-                    new Platform { Name = "PC", VideoGame = videoGames[1] },
-                    new Platform { Name = "PC", VideoGame = videoGames[2] },
-                    new Platform { Name = "PC", VideoGame = videoGames[3] },
+                    new Platform { Name = "PC" },
+                    new Platform { Name = "PlayStation" },
+                    new Platform { Name = "Xbox" },
+                    new Platform { Name = "Nintentdo Switch" },
                 };
 
                 foreach (Platform platform in platforms)
                 {
                     context.Platforms.Add(platform);
+                }
+
+                var videoGames = new List<VideoGame>
+                {
+                    new VideoGame { Title = "World of Warcraft", Studio = studios[0], Genre = genres[0], Platform = platforms[0], Price = Decimal.Parse("30") },
+                    new VideoGame { Title = "Mario", Studio = studios[1], Genre = genres[1], Platform = platforms[1], Price = Decimal.Parse("19") },
+                    new VideoGame { Title = "League of Legends", Studio = studios[2], Genre = genres[2], Platform = platforms[2], Price = Decimal.Parse("0") },
+                    new VideoGame { Title = "Counter-Strike: Global Offensive", Studio = studios[3], Genre = genres[3], Platform = platforms[3], Price = Decimal.Parse("15") },
+                };
+
+                foreach (VideoGame videoGame in videoGames)
+                {
+                    context.VideoGames.Add(videoGame);
                 }
 
                 context.SaveChanges();

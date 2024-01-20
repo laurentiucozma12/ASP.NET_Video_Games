@@ -15,7 +15,13 @@ namespace VideoGameModel.Models
         [ForeignKey("StudioId")]
         public int? StudioId { get; set; }
         public Studio? Studio { get; set; }
-        public ICollection<Genre>? Genres { get; set; }
-        public ICollection<Platform>? Platforms { get; set; }
+
+        [ForeignKey("GenreId")]
+        public int? GenreId { get; set; }
+        public Genre? Genre { get; set; }
+
+        [ForeignKey("PlatformId")]
+        public int? PlatformId { get; set; }
+        public Platform? Platform { get; set; }
     }
 }
